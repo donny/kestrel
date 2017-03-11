@@ -1,0 +1,13 @@
+{
+  "database": {
+    "rules": "database.rules.json"
+  },
+  "hosting": {
+    "firebase": "fiftytwo-kestrel",
+    "public": "dist",
+    "rewrites": [{
+      "source": "**",
+      "destination": "/index.html"
+    }]
+  }
+}
