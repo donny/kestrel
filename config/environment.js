@@ -11,6 +11,16 @@ module.exports = function(environment) {
       databaseURL: 'https://fiftytwo-kestrel.firebaseio.com',
       storageBucket: 'fiftytwo-kestrel.appspot.com',
     },
+    contentSecurityPolicy: {
+      'default-src': "'none'",
+      'script-src': "'self' 'unsafe-inline' 'unsafe-eval' apis.google.com",
+      'frame-src': "'self' https://*.firebaseapp.com",
+      'connect-src': "'self' wss://*.firebaseio.com https://*.googleapis.com",
+      'style-src': "'self' 'unsafe-inline' https://fonts.googleapis.com",
+      'font-src': "'self' fonts.gstatic.com",
+      'img-src': "'self' data:",
+      'media-src': "'self'"
+    },
     torii: {
       sessionServiceName: 'session'
     },
