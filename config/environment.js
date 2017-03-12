@@ -7,17 +7,12 @@ module.exports = function(environment) {
     rootURL: '/',
     locationType: 'auto',
     firebase: {
-      apiKey: process.env.FIREBASE_API_KEY,
       authDomain: 'fiftytwo-kestrel.firebaseapp.com',
       databaseURL: 'https://fiftytwo-kestrel.firebaseio.com',
       storageBucket: 'fiftytwo-kestrel.appspot.com',
-      messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
     },
-    // if using ember-cli-content-security-policy
-    contentSecurityPolicy: {
-      'script-src': "'self' 'unsafe-eval' apis.google.com",
-      'frame-src': "'self' https://*.firebaseapp.com",
-      'connect-src': "'self' wss://*.firebaseio.com https://*.googleapis.com"
+    torii: {
+      sessionServiceName: 'session'
     },
     EmberENV: {
       FEATURES: {
