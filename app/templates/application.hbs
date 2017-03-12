@@ -1,5 +1,35 @@
-{{!-- The following component displays Ember's default welcome message. --}}
-{{welcome-page}}
-{{!-- Feel free to remove this! --}}
+{{#if session.isAuthenticated}}
+  Logged in as {{session.currentUser.email}}
+  <button {{action "signOut"}}>Sign out</button>
+  {{outlet}}
+{{else}}
 
-{{outlet}}
+  <div class="layout-row layout-xs-column">
+    <div class="flex-offset-35 flex-30">
+
+        <div class="layout-row">
+          <div class="layout-column flex-100">
+            {{paper-input label="Email" type="email" value=email onChange=(action (mut email)) required=true}}
+            {{paper-input label="Password" type="password" value=password onChange=(action (mut password)) required=true}}
+          </div>
+        </div>
+        <div class="layout-row">
+          {{#paper-button raised=true primary=true disabled=signInDisabled onClick=(action "signIn")}}Sign In{{/paper-button}}
+        </div>
+
+    </div>
+  </div>
+
+{{/if}}
+
+{{#if showErrorDialog}}
+  {{#paper-dialog fullscreen=fullscreen onClose=(action "closeErrorDialog") clickOutsideToClose=true}}
+    {{#paper-dialog-content}}
+      <h2 class="md-title">Error</h2>
+      <p>Incorrect email or password.</p>
+    {{/paper-dialog-content}}
+    {{#paper-dialog-actions class="layout-row"}}
+      {{#paper-button primary=true onClick=(action "closeErrorDialog")}}OK{{/paper-button}}
+    {{/paper-dialog-actions}}
+  {{/paper-dialog}}
+{{/if}}
