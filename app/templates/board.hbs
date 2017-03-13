@@ -1,1 +1,22 @@
-<h1>Board</h1>
+{{#paper-button onClick=(action "showCreateListDialog")}}New List{{/paper-button}}
+
+{{#each model as |list|}}
+  {{kestrel-list list=list}}
+{{/each}}
+
+{{#if createListDialogShown}}
+  {{#paper-dialog fullscreen=fullscreen onClose=(action "closeCreateListDialog") clickOutsideToClose=true}}
+    {{#paper-dialog-content}}
+      <h2 class="md-title">New List</h2>
+      <div class="layout-row">
+        <div class="layout-column flex-100">
+          {{paper-input label="Title" type="text" value=title onChange=(action (mut title)) required=true}}
+        </div>
+      </div>
+    {{/paper-dialog-content}}
+    {{#paper-dialog-actions class="layout-row"}}
+      {{#paper-button onClick=(action "closeCreateListDialog")}}Cancel{{/paper-button}}
+      {{#paper-button primary=true disabled=createListButtonDisabled onClick=(action "createList")}}Create{{/paper-button}}
+    {{/paper-dialog-actions}}
+  {{/paper-dialog}}
+{{/if}}

@@ -6,7 +6,10 @@ export default Ember.Controller.extend({
   showErrorDialog: false,
 
   signInDisabled: Ember.computed('email', 'password', function() {
-    return (this.get('email') === null || this.get('password') === null);
+    const email = this.get('email');
+    const password = this.get('password');
+
+    return (Ember.isBlank(email) || Ember.isBlank(password));
   }),
 
   actions: {
