@@ -2,6 +2,9 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   beforeModel: function() {
-    return this.get('session').fetch().catch(function() {});
+    const context = this;
+    return this.get('session').fetch().catch(function() {
+      context.transitionTo('index');
+    });
   }
 });
