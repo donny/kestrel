@@ -1,19 +1,25 @@
 {{#paper-list}}
 
   {{#paper-subheader}}
-    {{#paper-button iconButton=true onClick=(action "showCreateCardDialog")}}{{paper-icon "add circle outline"}}{{/paper-button}}
-    {{list.title}}
+    <div class="layout-row layout-align-space-around-center">
+      <div class="flex-10">
+        {{#paper-button iconButton=true onClick=(action "showCreateCardDialog")}}{{paper-icon "add circle outline"}}{{/paper-button}}
+      </div>
+      <div class="flex-90">
+        <h1>{{list.title}}</h1>
+      </div>
+    </div>
   {{/paper-subheader}}
 
   {{paper-divider}}
 
-  {{#each cards as |card|}}
-    {{#paper-item class="md-3-line md-long-text"}}
-      <div class="md-list-item-text">
-        <h3>{{card.title}}</h3>
+  <div class="layout-row layout-xs-column layout-wrap layout-align-space-around-start">
+    {{#each cards as |card|}}
+      <div class="flex-45">
+        {{kestrel-card card=card}}
       </div>
-    {{/paper-item}}
-  {{/each}}
+    {{/each}}
+  </div>
 
 {{/paper-list}}
 

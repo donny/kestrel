@@ -1,8 +1,8 @@
 {{#paper-button onClick=(action "showCreateListDialog")}}New List{{/paper-button}}
 
-<div class="layout-row layout-xs-column">
+<div class="layout-row layout-xs-column layout-wrap layout-align-space-around-start">
   {{#each model as |list|}}
-    <div class="flex-offset-5 flex-40">
+    <div class="flex-45">
       {{kestrel-list list=list}}
     </div>
   {{/each}}

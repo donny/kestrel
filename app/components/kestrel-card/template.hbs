@@ -1,0 +1,12 @@
+{{#paper-card as |pcard|}}
+  {{#pcard.title as |ptitle|}}
+    {{#ptitle.text as |text|}}
+      {{#text.headline}}{{card.title}}{{/text.headline}}
+      {{#text.subhead}}<em>Score: {{card.score}}</em>{{/text.subhead}}
+    {{/ptitle.text}}
+  {{/pcard.title}}
+  {{#pcard.actions}}
+    {{#paper-button iconButton=true}}{{paper-icon "delete"}}{{/paper-button}}
+    {{#paper-button iconButton=true}}{{paper-icon "plus one"}}{{/paper-button}}
+  {{/pcard.actions}}
+{{/paper-card}}
