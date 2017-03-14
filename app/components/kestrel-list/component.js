@@ -11,15 +11,15 @@ export default Ember.Component.extend({
   }),
 
   actions: {
-    showNewCardDialog: function() {
+    showNewCardDialog() {
       this.set('newCardDialogShown', true);
     },
 
-    closeNewCardDialog: function() {
+    closeNewCardDialog() {
       this.set('newCardDialogShown', false);
     },
 
-    saveCard: function(title) {
+    saveCard(title) {
       const store = this.get('store');
       var newCard = store.createRecord('card', {
         title: title,

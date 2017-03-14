@@ -4,15 +4,15 @@ export default Ember.Controller.extend({
   newListDialogShown: false,
 
   actions: {
-    showNewListDialog: function() {
+    showNewListDialog() {
       this.set('newListDialogShown', true);
     },
 
-    closeNewListDialog: function() {
+    closeNewListDialog() {
       this.set('newListDialogShown', false);
     },
 
-    saveList: function(title) {
+    saveList(title) {
       var newList = this.store.createRecord('list', {
         title: title
       });

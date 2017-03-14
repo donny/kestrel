@@ -13,7 +13,7 @@ export default Ember.Controller.extend({
   }),
 
   actions: {
-    signIn: function() {
+    signIn() {
       const email = this.get('email');
       const password = this.get('password');
       const context = this;
@@ -31,11 +31,11 @@ export default Ember.Controller.extend({
       });
     },
 
-    signOut: function() {
+    signOut() {
       this.get('session').close();
     },
 
-    closeErrorDialog: function() {
+    closeErrorDialog() {
       this.set('showErrorDialog', false);
     }
   }

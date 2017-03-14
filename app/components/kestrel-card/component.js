@@ -5,15 +5,15 @@ export default Ember.Component.extend({
   deleteCardDialogShown: false,
 
   actions: {
-    showDeleteCardDialog: function() {
+    showDeleteCardDialog() {
       this.set('deleteCardDialogShown', true);
     },
 
-    closeDeleteCardDialog: function() {
+    closeDeleteCardDialog() {
       this.set('deleteCardDialogShown', false);
     },
 
-    increaseScore: function() {
+    increaseScore() {
       const store = this.get('store');
       store.findRecord('card', this.get('card.id')).then(function(card) {
         card.incrementProperty('score');
@@ -21,7 +21,7 @@ export default Ember.Component.extend({
       });
     },
 
-    deleteCard: function() {
+    deleteCard() {
       const store = this.get('store');
       store.findRecord('card', this.get('card.id'), {
         backgroundReload: false
