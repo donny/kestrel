@@ -14,14 +14,7 @@
   </div>
 </div>
 
-{{#if showErrorDialog}}
-  {{#paper-dialog fullscreen=fullscreen onClose=(action "closeErrorDialog") clickOutsideToClose=true}}
-    {{#paper-dialog-content}}
-      <h2 class="md-title">Error</h2>
-      <p>Incorrect email or password.</p>
-    {{/paper-dialog-content}}
-    {{#paper-dialog-actions class="layout-row"}}
-      {{#paper-button primary=true onClick=(action "closeErrorDialog")}}OK{{/paper-button}}
-    {{/paper-dialog-actions}}
-  {{/paper-dialog}}
+{{#if errorDialogShown}}
+  {{k-message-dialog header="Error" message="Incorrect email or password."
+    okAction=(action "closeErrorDialog")}}
 {{/if}}

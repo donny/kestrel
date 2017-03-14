@@ -3,12 +3,11 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   email: null,
   password: null,
-  showErrorDialog: false,
+  errorDialogShown: false,
 
   signInDisabled: Ember.computed('email', 'password', function() {
     const email = this.get('email');
     const password = this.get('password');
-
     return (Ember.isBlank(email) || Ember.isBlank(password));
   }),
 
@@ -27,7 +26,7 @@ export default Ember.Controller.extend({
         context.transitionToRoute('board');
       }).catch(function(error) {
         console.log(error);
-        context.set('showErrorDialog', true);
+        context.set('errorDialogShown', true);
       });
     },
 
@@ -36,7 +35,7 @@ export default Ember.Controller.extend({
     },
 
     closeErrorDialog() {
-      this.set('showErrorDialog', false);
+      this.set('errorDialogShown', false);
     }
   }
 });
