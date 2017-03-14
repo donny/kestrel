@@ -1,30 +1,23 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  title: null,
-  createListDialogShown: false,
-
-  createListButtonDisabled: Ember.computed('title', function() {
-    return Ember.isBlank(this.get('title'));
-  }),
+  newListDialogShown: false,
 
   actions: {
-    showCreateListDialog: function() {
-      this.set('createListDialogShown', true);
+    showNewListDialog: function() {
+      this.set('newListDialogShown', true);
     },
 
-    closeCreateListDialog: function() {
-      this.set('title', null);
-      this.set('createListDialogShown', false);
+    closeNewListDialog: function() {
+      this.set('newListDialogShown', false);
     },
 
-    createList: function() {
+    saveList: function(title) {
       var newList = this.store.createRecord('list', {
-        title: this.get('title')
+        title: title
       });
       newList.save();
-      this.set('title', null);
-      this.set('createListDialogShown', false);
+      this.set('newListDialogShown', false);
     }
   }
 });

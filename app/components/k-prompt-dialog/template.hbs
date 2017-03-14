@@ -1,0 +1,14 @@
+{{#paper-dialog fullscreen=fullscreen onClose=(action cancelAction) clickOutsideToClose=true}}
+  {{#paper-dialog-content}}
+    <h2 class="md-title">{{header}}</h2>
+    <div class="layout-row">
+      <div class="layout-column flex-100">
+        {{paper-input label=label type="text" value=text onChange=(action (mut text)) required=true}}
+      </div>
+    </div>
+  {{/paper-dialog-content}}
+  {{#paper-dialog-actions class="layout-row"}}
+    {{#paper-button onClick=(action cancelAction)}}Cancel{{/paper-button}}
+    {{#paper-button primary=true disabled=okButtonDisabled onClick=(action okAction text)}}OK{{/paper-button}}
+  {{/paper-dialog-actions}}
+{{/paper-dialog}}
