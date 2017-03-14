@@ -2,12 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   store: Ember.inject.service(),
-  title: null,
-  createCardDialogShown: false,
-
-  createCardButtonDisabled: Ember.computed('title', function() {
-    return Ember.isBlank(this.get('title'));
-  }),
+  newCardDialogShown: false,
 
   cards: Ember.computed('list', function() {
     const store = this.get('store');
@@ -16,25 +11,23 @@ export default Ember.Component.extend({
   }),
 
   actions: {
-    showCreateCardDialog: function() {
-      this.set('createCardDialogShown', true);
+    showNewCardDialog: function() {
+      this.set('newCardDialogShown', true);
     },
 
-    closeCreateCardDialog: function() {
-      this.set('title', null);
-      this.set('createCardDialogShown', false);
+    closeNewCardDialog: function() {
+      this.set('newCardDialogShown', false);
     },
 
-    createCard: function() {
+    saveCard: function(title) {
       const store = this.get('store');
       var newCard = store.createRecord('card', {
-        title: this.get('title'),
+        title: title,
         score: 0,
         list: this.get('list.id')
       });
       newCard.save();
-      this.set('title', null);
-      this.set('createCardDialogShown', false);
+      this.set('newCardDialogShown', false);
     }
   }
 });

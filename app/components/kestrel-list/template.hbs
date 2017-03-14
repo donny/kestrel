@@ -3,11 +3,9 @@
   {{#paper-subheader}}
     <div class="layout-row layout-align-space-around-center">
       <div class="flex-10">
-        {{#paper-button iconButton=true onClick=(action "showCreateCardDialog")}}{{paper-icon "add circle outline"}}{{/paper-button}}
+        {{#paper-button iconButton=true onClick=(action "showNewCardDialog")}}{{paper-icon "add circle outline"}}{{/paper-button}}
       </div>
-      <div class="flex-90">
-        <h1>{{list.title}}</h1>
-      </div>
+      <div class="flex-90"><h1>{{list.title}}</h1></div>
     </div>
   {{/paper-subheader}}
 
@@ -15,27 +13,14 @@
 
   <div class="layout-row layout-xs-column layout-wrap layout-align-space-around-start">
     {{#each cards as |card|}}
-      <div class="flex-45">
-        {{kestrel-card card=card}}
-      </div>
+      <div class="flex-45">{{kestrel-card card=card}}</div>
     {{/each}}
   </div>
 
 {{/paper-list}}
 
-{{#if createCardDialogShown}}
-  {{#paper-dialog fullscreen=fullscreen onClose=(action "closeCreateCardDialog") clickOutsideToClose=true}}
-    {{#paper-dialog-content}}
-      <h2 class="md-title">New Card</h2>
-      <div class="layout-row">
-        <div class="layout-column flex-100">
-          {{paper-input label="Title" type="text" value=title onChange=(action (mut title)) required=true}}
-        </div>
-      </div>
-    {{/paper-dialog-content}}
-    {{#paper-dialog-actions class="layout-row"}}
-      {{#paper-button onClick=(action "closeCreateCardDialog")}}Cancel{{/paper-button}}
-      {{#paper-button primary=true disabled=createCardButtonDisabled onClick=(action "createCard")}}Create{{/paper-button}}
-    {{/paper-dialog-actions}}
-  {{/paper-dialog}}
+{{#if newCardDialogShown}}
+  {{k-prompt-dialog header="New Card" label="Title"
+    cancelAction=(action "closeNewCardDialog")
+    okAction=(action "saveCard")}}
 {{/if}}
