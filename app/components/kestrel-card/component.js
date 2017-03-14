@@ -12,6 +12,14 @@ export default Ember.Component.extend({
         card.incrementProperty('score');
         card.save();
       });
+    },
+    deleteCard: function() {
+      const store = this.get('store');
+      const cardId = this.get('card.id');
+
+      store.findRecord('card', cardId, { backgroundReload: false }).then(function(card) {
+        card.destroyRecord();
+      });
     }
   }
 });

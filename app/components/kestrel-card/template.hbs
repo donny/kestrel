@@ -6,7 +6,7 @@
     {{/ptitle.text}}
   {{/pcard.title}}
   {{#pcard.actions}}
-    {{#paper-button iconButton=true}}{{paper-icon "delete"}}{{/paper-button}}
+    {{#paper-button iconButton=true onClick=(action "deleteCard")}}{{paper-icon "delete"}}{{/paper-button}}
     {{#paper-button iconButton=true onClick=(action "increaseScore")}}{{paper-icon "plus one"}}{{/paper-button}}
   {{/pcard.actions}}
 {{/paper-card}}
