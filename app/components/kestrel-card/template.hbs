@@ -1,3 +1,6 @@
+{{#draggable-object-target action="mergeCard"}}
+{{#draggable-object content=this}}
+
 {{#paper-card as |pcard|}}
   {{#pcard.title as |ptitle|}}
     {{#ptitle.text as |text|}}
@@ -6,13 +9,23 @@
     {{/ptitle.text}}
   {{/pcard.title}}
   {{#pcard.actions}}
+    {{#paper-button iconButton=true onClick=(action "showEditCardDialog")}}{{paper-icon "mode edit"}}{{/paper-button}}
     {{#paper-button iconButton=true onClick=(action "showDeleteCardDialog")}}{{paper-icon "delete"}}{{/paper-button}}
     {{#paper-button iconButton=true onClick=(action "increaseScore")}}{{paper-icon "plus one"}}{{/paper-button}}
   {{/pcard.actions}}
 {{/paper-card}}
 
+{{/draggable-object}}
+{{/draggable-object-target}}
+
 {{#if deleteCardDialogShown}}
   {{k-confirm-dialog header="Confirmation" message="Delete the card?"
     cancelAction=(action "closeDeleteCardDialog")
     okAction=(action "deleteCard")}}
+{{/if}}
+
+{{#if editCardDialogShown}}
+  {{k-prompt-dialog header="Edit Card" label="Title" text=(unbound card.title)
+    cancelAction=(action "closeEditCardDialog")
+    okAction=(action "editCard")}}
 {{/if}}

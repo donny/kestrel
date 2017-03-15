@@ -1,3 +1,4 @@
+{{#draggable-object-target action="moveCard"}}
 {{#paper-list}}
 
   {{#paper-subheader}}
@@ -13,11 +14,14 @@
 
   <div class="layout-row layout-xs-column layout-wrap layout-align-space-around-start">
     {{#each cards as |card|}}
-      <div class="flex-45">{{kestrel-card card=card}}</div>
+      <div class="flex-45">
+        {{kestrel-card card=card}}
+      </div>
     {{/each}}
   </div>
 
 {{/paper-list}}
+{{/draggable-object-target}}
 
 {{#if newCardDialogShown}}
   {{k-prompt-dialog header="New Card" label="Title"

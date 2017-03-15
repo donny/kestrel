@@ -11,6 +11,15 @@ export default Ember.Component.extend({
   }),
 
   actions: {
+    moveCard(obj) {
+      const store = this.get('store');
+      const listId = this.get('list.id');
+      store.findRecord('card', obj.get('card.id')).then(function(card) {
+        card.set('list', listId);
+        card.save();
+      });
+    },
+
     showNewCardDialog() {
       this.set('newCardDialogShown', true);
     },
