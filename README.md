@@ -38,6 +38,10 @@ export default DS.Model.extend({
 });
 ```
 
+The implementation of Kestrel was relatively straight forward. EmberFire takes care of the possible synchronisation issues with Firebase. From the point of view of the app, the user data can be treated just like a normal dictionary. Ember Paper provides the Material Design styling for the app and the [Cards](https://material.io/guidelines/components/cards.html) design is a natural fit for the the idea board cards.
+
 ### Conclusion
 
-...
+I have done development work with Ember before and I quite like it because it is an opinionated framework and a good ecosystem. It provides default choices for tooling, e.g. [Ember CLI](https://ember-cli.com), and recommends standard best practices. We can just follow the recommended Ember way and concentrate on developing our apps.
+
+I like Firebase. It's really great to open Kestrel on desktop and on mobile phone; and see that the changes are reflected straight away. I'm pretty sure that I'll use this great combination of Ember and Firebase in future projects.
