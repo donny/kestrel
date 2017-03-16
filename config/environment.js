@@ -7,9 +7,11 @@ module.exports = function(environment) {
     rootURL: '/',
     locationType: 'auto',
     firebase: {
+      apiKey: 'XXXX',
       authDomain: 'fiftytwo-kestrel.firebaseapp.com',
       databaseURL: 'https://fiftytwo-kestrel.firebaseio.com',
       storageBucket: 'fiftytwo-kestrel.appspot.com',
+      messagingSenderId: 'XXXX'
     },
     contentSecurityPolicy: {
       'default-src': "'none'",
